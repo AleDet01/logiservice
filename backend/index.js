@@ -15,8 +15,8 @@ const testimonialRoutes = require('./routes/testimonialRoutes');
 // Configurazione CORS per produzione
 const corsOptions = {
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://logiservice-frontend.onrender.com'] 
-    : ['http://localhost:3001'],
+    ? true // Permette tutti gli origin per il debug
+    : ['http://localhost:3001', 'http://localhost:3000'],
   credentials: true,
   optionsSuccessStatus: 200
 };

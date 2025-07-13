@@ -60,21 +60,23 @@ const AreaUtente = () => {
       
       // Fetch user's consultations
       const consultationsRes = await axios.get('/api/consultations');
-      const userConsults = consultationsRes.data.filter(c => c.client?._id === user._id);
+      const consultationsData = Array.isArray(consultationsRes.data) ? consultationsRes.data : [];
+      const userConsults = consultationsData.filter(c => c.client?._id === user._id);
       setUserConsultations(userConsults);
 
       // Fetch user's testimonials
       const testimonialsRes = await axios.get('/api/testimonials');
-      const userTestims = testimonialsRes.data.filter(t => t.client?._id === user._id);
+      const testimonialsData = Array.isArray(testimonialsRes.data) ? testimonialsRes.data : [];
+      const userTestims = testimonialsData.filter(t => t.client?._id === user._id);
       setUserTestimonials(userTestims);
 
       // If admin, fetch all consultations
       if (user.role === 'admin') {
-        setAllConsultations(consultationsRes.data);
+        setAllConsultations(consultationsData);
       }
     } catch (err) {
       setError('Errore nel caricamento dei dati');
-      console.error(err);
+      console.error('Error details:', err);
     } finally {
       setLoading(false);
     }
