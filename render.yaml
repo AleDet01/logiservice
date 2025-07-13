@@ -11,9 +11,7 @@ services:
       - key: NODE_ENV
         value: production
       - key: MONGODB_URI
-        fromDatabase:
-          name: logiservice-db
-          property: connectionString
+        value: mongodb+srv://alexdetu01:V3uRddwRInTa5kDe@logiservice.9ulpkdj.mongodb.net/logiservice?retryWrites=true&w=majority&appName=logiservice
       - key: JWT_SECRET
         generateValue: true
 
@@ -31,11 +29,3 @@ services:
           type: web
           name: logiservice-backend
           property: host
-
-databases:
-  # MongoDB Database
-  - name: logiservice-db
-    databaseName: logiservice
-    user: logiservice_user
-    region: frankfurt
-    plan: free
