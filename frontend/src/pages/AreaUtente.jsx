@@ -59,12 +59,12 @@ const AreaUtente = () => {
       setLoading(true);
       
       // Fetch user's consultations
-      const consultationsRes = await axios.get('http://localhost:3000/api/consultations');
+      const consultationsRes = await axios.get('/api/consultations');
       const userConsults = consultationsRes.data.filter(c => c.client?._id === user._id);
       setUserConsultations(userConsults);
 
       // Fetch user's testimonials
-      const testimonialsRes = await axios.get('http://localhost:3000/api/testimonials');
+      const testimonialsRes = await axios.get('/api/testimonials');
       const userTestims = testimonialsRes.data.filter(t => t.client?._id === user._id);
       setUserTestimonials(userTestims);
 

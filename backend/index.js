@@ -12,7 +12,16 @@ const productRoutes = require('./routes/productRoutes');
 const consultationRoutes = require('./routes/consultationRoutes');
 const testimonialRoutes = require('./routes/testimonialRoutes');
 
-app.use(cors());
+// Configurazione CORS per produzione
+const corsOptions = {
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://logiservice-frontend.onrender.com'] 
+    : ['http://localhost:3001'],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Usa i router con i prefissi

@@ -28,7 +28,7 @@ const TestimonianzeList = () => {
     const fetchTestimonianze = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://localhost:3000/api/testimonials');
+        const response = await axios.get('/api/testimonials');
         setTestimonianze(response.data);
         setError(null);
       } catch (err) {

@@ -1,0 +1,56 @@
+services:
+  # Backend API Service
+  - type: web
+    name: logiservice-backend
+    env: node
+    region: frankfurt
+    plan: free
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    healthCheckPath: /api/users
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        fromDatabase:
+          name: logiservice-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+    scaling:
+      minInstances: 1
+      maxInstances: 1
+
+  # Frontend Static Site
+  - type: static
+    name: logiservice-frontend
+    env: static
+    region: frankfurt
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: ./frontend/build
+    pullRequestPreviewsEnabled: true
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: REACT_APP_API_URL
+        fromService:
+          type: web
+          name: logiservice-backend
+          property: host
+
+databases:
+  # MongoDB Database
+  - name: logiservice-db
+    databaseName: logiservice
+    user: logiservice-user
+    region: frankfurt
+    plan: free
