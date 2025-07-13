@@ -24,6 +24,15 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
+// Endpoint di test per verificare che il server funzioni
+app.get('/api/health', (req, res) => {
+  res.json({ 
+    status: 'OK', 
+    timestamp: new Date().toISOString(),
+    database: database.readyState === 1 ? 'Connected' : 'Disconnected'
+  });
+});
+
 // Usa i router con i prefissi
 app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
@@ -33,11 +42,21 @@ app.use('/api/testimonials', testimonialRoutes);
 mongoose.connect(process.env.MONGODB_URI);
 const database = mongoose.connection;
 
+console.log('Environment variables:');
+console.log('NODE_ENV:', process.env.NODE_ENV);
+console.log('MONGODB_URI:', process.env.MONGODB_URI ? 'Set' : 'Not set');
+console.log('PORT:', process.env.PORT);
+
+database.on('error', (err) => {
+  console.error('Database connection error:', err);
+});
+
 database.once("open", () => {
   console.log("Connesso al DB");
   console.log("Host MongoDB:", database.host);
-  const PORT = process.env.PORT || 3000; // Render usa la variabile PORT
+  const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => {
     console.log(`Server avviato sulla porta ${PORT}`);
+    console.log(`CORS configuration:`, corsOptions);
   });
 });
