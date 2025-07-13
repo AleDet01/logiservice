@@ -36,7 +36,8 @@ const database = mongoose.connection;
 database.once("open", () => {
   console.log("Connesso al DB");
   console.log("Host MongoDB:", database.host);
-  app.listen(3000, () => {
-    console.log("App in ascolto");
+  const PORT = process.env.PORT || 3000; // Render usa la variabile PORT
+  app.listen(PORT, () => {
+    console.log(`Server avviato sulla porta ${PORT}`);
   });
 });

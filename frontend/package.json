@@ -22,7 +22,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.0",
     "react-scripts": "^5.0.1",
-    "react-toastify": "^11.0.5"
+    "react-toastify": "^11.0.5",
+    "serve": "^14.2.0"
   },
   "proxy": "http://localhost:3000",
   "browserslist": {
