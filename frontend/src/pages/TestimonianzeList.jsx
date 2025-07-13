@@ -29,7 +29,7 @@ const TestimonianzeList = () => {
       try {
         setLoading(true);
         const response = await axios.get('/api/testimonials');
-        setTestimonianze(response.data);
+        setTestimonianze(Array.isArray(response.data) ? response.data : []);
         setError(null);
       } catch (err) {
         console.error('Errore nel caricamento testimonianze:', err);
@@ -118,7 +118,7 @@ const TestimonianzeList = () => {
           </Paper>
         ) : (
           <Grid container spacing={3} sx={{ justifyContent: 'center' }}>
-            {testimonianze.map((testimonianza, index) => {
+            {Array.isArray(testimonianze) && testimonianze.map((testimonianza, index) => {
               const authorName = testimonianza.clientName || testimonianza.author || `Cliente ${index + 1}`;
               const rating = testimonianza.rating || 5;
               

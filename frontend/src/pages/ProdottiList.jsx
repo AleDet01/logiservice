@@ -47,7 +47,7 @@ const ProdottiList = () => {
       try {
         setLoading(true);
         const response = await axios.get('/api/products');
-        setProdotti(response.data);
+        setProdotti(Array.isArray(response.data) ? response.data : []);
         setError(null);
       } catch (err) {
         console.error('Errore nel caricamento prodotti:', err);
@@ -103,7 +103,7 @@ const ProdottiList = () => {
         </Box>
       ) : (
         <Grid container spacing={3} sx={{ justifyContent: 'center' }}>
-          {prodotti.map((prodotto, index) => (
+          {Array.isArray(prodotti) && prodotti.map((prodotto, index) => (
             <Grid item key={prodotto._id} xs={12} sm={6} md={4} lg={3} xl={3} sx={{ display: 'flex', justifyContent: 'center' }}>
               <Card 
                 elevation={3}
