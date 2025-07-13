@@ -46,21 +46,11 @@ const ProdottiList = () => {
     const fetchProdotti = async () => {
       try {
         setLoading(true);
-        console.log('Fetching prodotti from:', '/api/products');
-        console.log('Base URL:', axios.defaults.baseURL);
         const response = await axios.get('/api/products');
-        console.log('Response received:', response);
-        console.log('Response data:', response.data);
         setProdotti(Array.isArray(response.data) ? response.data : []);
         setError(null);
       } catch (err) {
         console.error('Errore nel caricamento prodotti:', err);
-        console.error('Error details:', {
-          message: err.message,
-          status: err.response?.status,
-          statusText: err.response?.statusText,
-          data: err.response?.data
-        });
         setError('Errore nel caricamento dei prodotti. Riprova più tardi.');
       } finally {
         setLoading(false);

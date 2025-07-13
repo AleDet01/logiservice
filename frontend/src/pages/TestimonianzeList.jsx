@@ -28,21 +28,11 @@ const TestimonianzeList = () => {
     const fetchTestimonianze = async () => {
       try {
         setLoading(true);
-        console.log('Fetching testimonianze from:', '/api/testimonials');
-        console.log('Base URL:', axios.defaults.baseURL);
         const response = await axios.get('/api/testimonials');
-        console.log('Response received:', response);
-        console.log('Response data:', response.data);
         setTestimonianze(Array.isArray(response.data) ? response.data : []);
         setError(null);
       } catch (err) {
         console.error('Errore nel caricamento testimonianze:', err);
-        console.error('Error details:', {
-          message: err.message,
-          status: err.response?.status,
-          statusText: err.response?.statusText,
-          data: err.response?.data
-        });
         setError('Errore nel caricamento delle testimonianze. Riprova più tardi.');
       } finally {
         setLoading(false);

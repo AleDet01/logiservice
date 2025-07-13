@@ -25,7 +25,4 @@ services:
     startCommand: cd frontend && npx serve -s build -l 10000
     envVars:
       - key: REACT_APP_API_URL
-        fromService:
-          type: web
-          name: logiservice-backend
-          property: url
+        value: https://logiservice-backend.onrender.com
