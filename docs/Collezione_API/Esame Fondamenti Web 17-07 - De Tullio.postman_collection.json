@@ -1,0 +1,504 @@
+{
+	"info": {
+		"_postman_id": "2a5f6fbc-3714-4423-8ac2-383681546ea1",
+		"name": "Esame Fondamenti Web 17/07 - De Tullio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38227375"
+	},
+	"item": [
+		{
+			"name": "product-API",
+			"item": [
+				{
+					"name": "all-products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/products",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single-product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/products/6872679f76e986c9f06570bf",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"6872679f76e986c9f06570bf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Portapallet 3000\",\r\n  \"type\": \"portapallet\",\r\n  \"loadCapacityKg\": 3000,\r\n  \"dimensions\": {\r\n    \"height\": 250,\r\n    \"width\": 120,\r\n    \"depth\": 60\r\n  },\r\n  \"price\": 1800,\r\n  \"description\": \"Portapallet per carichi pesanti.\",\r\n  \"images\": [\"portapallet3000.jpg\"],\r\n  \"inStock\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/products",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Portapallet 3000\",\r\n  \"type\": \"portapallet\",\r\n  \"loadCapacityKg\": 3000,\r\n  \"dimensions\": {\r\n    \"height\": 250,\r\n    \"width\": 120,\r\n    \"depth\": 60\r\n  },\r\n  \"price\": 1800,\r\n  \"description\": \"Portapallet per carichi pesanti.\",\r\n  \"images\": [\"portapallet3000.jpg\"],\r\n  \"inStock\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/products/6872679f76e986c9f06570bf",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"6872679f76e986c9f06570bf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"price\": 1200,\r\n  \"inStock\": false,\r\n  \"description\": \"Questo è un test di aggiornamento di un record.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/products/6872679f76e986c9f06570bf",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"6872679f76e986c9f06570bf"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Una lista di tutte le API prodotte per manipolare i prodotti"
+		},
+		{
+			"name": "consultation-API",
+			"item": [
+				{
+					"name": "all-consultations",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NzI2YmYzZTJkMjc2MTAzMDhkMGRiNSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjMyOTYxOCwiZXhwIjoxNzUyOTM0NDE4fQ.SiVDzxiwcAg_IKK0hOg6d4InYoshyCCz9uwWb39EO5w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/consultations",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"consultations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-consultation-by-company-size",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/consultations/company-size/piccola",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"consultations",
+								"company-size",
+								"piccola"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-consultation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"client\": \"64a1a1a1a1a1a1a1a1a1a1a9\",\r\n  \"product\": \"687269ef257e5ce20c5456fd\",\r\n  \"companySize\": \"piccola\",\r\n  \"location\": \"Milano\",\r\n  \"message\": \"Vorrei una consulenza per il prodotto.\",\r\n  \"status\": \"new\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/consultations",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"consultations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-consultation-by-status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/consultations/status/new",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"consultations",
+								"status",
+								"new"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Una lista di tutte le API prodotte per manipolare le richieste di appuntamento/consulenza"
+		},
+		{
+			"name": "testimonial-API",
+			"item": [
+				{
+					"name": "all-testimonials",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/testimonials",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"testimonials"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-testimonial",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"client\": \"64a1a1a1a1a1a1a1a1a1a1a9\",\r\n  \"clientName\": \"Mario Rossi\",\r\n  \"company\": \"Azienda Srl\",\r\n  \"message\": \"Servizio eccellente, prodotti di qualità!\",\r\n  \"rating\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/testimonials",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"testimonials"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Una lista dei metodi (create/search) per le recensioni"
+		},
+		{
+			"name": "user-API",
+			"item": [
+				{
+					"name": "register-new-user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Mario Rossi\",\r\n  \"email\": \"mario.sale@email.com\",\r\n  \"password\": \"password123\",\r\n  \"role\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/users/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login-registeredUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NzI2YmYzZTJkMjc2MTAzMDhkMGRiNSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjMyOTYxOCwiZXhwIjoxNzUyOTM0NDE4fQ.SiVDzxiwcAg_IKK0hOg6d4InYoshyCCz9uwWb39EO5w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"mario.sale@email.com\",\r\n  \"password\": \"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/users/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all-users (admin-auth)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NzI2YmYzZTJkMjc2MTAzMDhkMGRiNSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjMyOTYxOCwiZXhwIjoxNzUyOTM0NDE4fQ.SiVDzxiwcAg_IKK0hOg6d4InYoshyCCz9uwWb39EO5w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/users",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-user-by-id (admin-auth)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NzI2YmYzZTJkMjc2MTAzMDhkMGRiNSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjMyOTYxOCwiZXhwIjoxNzUyOTM0NDE4fQ.SiVDzxiwcAg_IKK0hOg6d4InYoshyCCz9uwWb39EO5w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/users/68726bf3e2d27610308d0db5",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"68726bf3e2d27610308d0db5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NzI2YmYzZTJkMjc2MTAzMDhkMGRiNSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjMyOTYxOCwiZXhwIjoxNzUyOTM0NDE4fQ.SiVDzxiwcAg_IKK0hOg6d4InYoshyCCz9uwWb39EO5w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/users/68726bf3e2d27610308d0db5",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"68726bf3e2d27610308d0db5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NzI2YmYzZTJkMjc2MTAzMDhkMGRiNSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjMyOTYxOCwiZXhwIjoxNzUyOTM0NDE4fQ.SiVDzxiwcAg_IKK0hOg6d4InYoshyCCz9uwWb39EO5w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/users/68726bf3e2d27610308d0db5",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"68726bf3e2d27610308d0db5"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Una lista dei vari metodi di manipolazione delle utenze , sia ruolo admin che user classico"
+		}
+	]
+}
