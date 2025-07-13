@@ -1,11 +1,15 @@
 const ConsultationRequest = require('../models/consultation');
 
 const createRequest = async (req, res) => {
+  console.log('createRequest - received data:', req.body);
   try {
     const consultation = new ConsultationRequest({ ...req.body });
+    console.log('createRequest - attempting to save:', consultation);
     await consultation.save();
+    console.log('createRequest - saved successfully');
     res.status(201).json(consultation);
   } catch (err) {
+    console.error('createRequest - error:', err);
     res.status(500).json({ error: err.message });
   }
 };
