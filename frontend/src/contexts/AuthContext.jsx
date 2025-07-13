@@ -5,6 +5,8 @@ const AuthContext = createContext();
 
 // Configurazione base per axios
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000';
+console.log('API_URL configured as:', API_URL);
+console.log('REACT_APP_API_URL env var:', process.env.REACT_APP_API_URL);
 axios.defaults.baseURL = API_URL;
 
 export function AuthProvider({ children }) {
