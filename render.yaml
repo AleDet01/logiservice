@@ -17,9 +17,6 @@ services:
           property: connectionString
       - key: JWT_SECRET
         generateValue: true
-    scaling:
-      minInstances: 1
-      maxInstances: 1
 
   # Frontend Web Service
   - type: web
@@ -40,6 +37,6 @@ databases:
   # MongoDB Database
   - name: logiservice-db
     databaseName: logiservice
-    user: logiservice-user
+    user: logiservice_user
     region: frankfurt
     plan: free
