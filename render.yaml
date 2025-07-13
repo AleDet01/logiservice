@@ -21,25 +21,14 @@ services:
       minInstances: 1
       maxInstances: 1
 
-  # Frontend Static Site
-  - type: static
+  # Frontend Web Service
+  - type: web
     name: logiservice-frontend
-    env: static
+    env: node
     region: frankfurt
-    buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: ./frontend/build
-    pullRequestPreviewsEnabled: true
-    headers:
-      - path: /*
-        name: X-Frame-Options
-        value: DENY
-      - path: /*
-        name: X-Content-Type-Options
-        value: nosniff
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
+    plan: free
+    buildCommand: cd frontend && npm install && npm run build && npm install -g serve
+    startCommand: cd frontend && serve -s build -l 10000
     envVars:
       - key: REACT_APP_API_URL
         fromService:
